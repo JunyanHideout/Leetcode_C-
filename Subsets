@@ -1,0 +1,15 @@
+class Solution {
+public:
+    vector<vector<int>> subsets(vector<int>& n) {
+        sort(n.begin(),n.end());
+        int cbnt=(int)pow(2,n.size());
+        vector<vector<int>> res(cbnt,vector<int>());
+        for(int i=0;i<cbnt;i++){
+            for(int j=0;j<n.size();j++){
+                if((i>>j)==0) break;
+                if(((i>>j)&1)==1) res[i].push_back(n[j]);
+            }
+        }
+        return res;
+    }
+};
